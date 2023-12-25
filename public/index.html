@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Voting Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Student of the Year 2023</h1>
+        <!-- Remove the existing script -->
+        <div class="message-container" id="infoMessage">
+            <span class="info-icon">ⓘ</span> You can only vote once
+        </div>
+        <form id="votingForm" action="/submit" method="post">
+            <label for="userName" class="username-label">Enter Your Name:</label>
+            <input type="text" id="userName" name="userName" class="username-input username-input-rounded" required>
+            <br>
+
+            <!-- Questions with dynamic options -->
+            <div class="question" data-question-id="q1">
+                <p>1. Nakhre Bazzz of the class for girls?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <div class="question" data-question-id="q2">
+                <p>2. Nakhre Bazzz of the class for boys?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <div class="question" data-question-id="q3">
+                <p>3. Husband boy of the class?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <div class="question" data-question-id="q4">
+                <p>4. Wifey girl of the class ?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <div class="question" data-question-id="q5">
+                <p>5. Walking red flag girl of the class?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <div class="question" data-question-id="q6">
+                <p>6. Walking red flag boy of the class?</p>
+                <div class="options-container">
+                </div>
+            </div>
+
+            <br>
+            <button type="submit">Submit Votes</button>
+        </form>
+
+        <script>
+            // Function to generate options dynamically with specified names
+            function generateOptions(questionId, optionNames) {
+                const optionsContainer = document.querySelector(`.question[data-question-id="${questionId}"] .options-container`);
+
+                optionNames.forEach((optionName, index) => {
+                    const label = document.createElement('label');
+                    label.innerHTML = `<input type="radio" class="option-button" name="${questionId}" value="option${index + 1}"> ${optionName}`;
+                    optionsContainer.appendChild(label);
+                });
+            }
+
+            // Call the function to generate options for each question with specified names
+            generateOptions('q1', ['Chandra', 'Aditi', 'Devyani', 'Ishwari']);
+            generateOptions('q2', ['Darshan', 'Sudarshan', 'Soham', 'Rohan']);
+            generateOptions('q3', ['Parth', 'Vaishnav', 'Suraj', 'Adhar']);
+            generateOptions('q4', ['Riya', 'Aditi', 'Lakshmi', 'Chandra']);
+            generateOptions('q5', ['Neha', 'Ishwari', 'Hanishka', 'Divya']);
+            generateOptions('q6', ['Adhar', 'Aditya', 'Suraj', 'Sudarshan']);
+            // Add more calls as needed for additional questions
+        </script>
+        <style>
+            /* Add your existing styles here */
+
+            button[type="submit"] {
+                background-color: #31afdd;
+                /* Set your preferred hot color */
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button[type="submit"]:hover {
+                background-color: #FFD580;
+                /* Change to a slightly different shade on hover */
+            }
+        </style>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
